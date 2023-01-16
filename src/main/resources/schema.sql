@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS brand;
+DROP TABLE IF EXISTS color;
+DROP TABLE IF EXISTS product_category;
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE brand (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE color (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(250) NOT NULL,
+code VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE product_category (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(250) NOT NULL
+);
+
+CREATE TABLE product (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(250) NOT NULL,
+quantity INT NOT NULL,
+product_size VARCHAR(5) NOT NULL,
+price INT NOT NULL,
+brand_id INT NOT NULL,
+color_id INT NOT NULL,
+category_id INT NOT NULL,
+FOREIGN KEY (brand_id) REFERENCES brand(id),
+FOREIGN KEY (color_id) REFERENCES color(id),
+FOREIGN KEY (category_id) REFERENCES product_category(id)
+);
